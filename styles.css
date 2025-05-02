@@ -1,0 +1,106 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Убираем прокрутку и устанавливаем 100% на весь экран */
+body,
+html {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    /* Убираем прокрутку */
+}
+
+/* Блок с видео и текстом */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Высота на весь экран */
+    display: flex;
+    justify-content: center;
+    /* По центру по горизонтали */
+    align-items: center;
+    /* По центру по вертикали */
+    text-align: center;
+    flex-direction: column;
+}
+
+/* Стили для текста */
+.line {
+    font-size: 8vw;
+    /* Текст будет масштабироваться в зависимости от ширины экрана */
+    color: white;
+    width: 100%;
+    /* Текст на всю ширину экрана */
+    height: 100%;
+    /* Текст на всю высоту экрана */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    /* Тень для улучшения читаемости */
+    white-space: nowrap;
+    /* Запрещаем перенос текста */
+    position: relative;
+    /* Текст будет поверх видео */
+    z-index: 2;
+    /* Чтобы текст был поверх других элементов */
+}
+
+/* Контейнер для видео */
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* Видео находится за текстом */
+}
+
+/* Стили для видео */
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Видео растягивается по экрану */
+}
+
+/* Черный полупрозрачный фон поверх видео */
+.video-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Черный полупрозрачный фон */
+    z-index: 1;
+    /* Это накрывает видео, но под текст */
+}
+
+/* Адаптивность для экранов с шириной до 768px */
+@media (max-width: 768px) {
+    .line {
+        font-size: 10vw;
+        /* Увеличиваем текст для мобильных */
+    }
+}
+
+/* Адаптивность для экранов с шириной до 480px */
+@media (max-width: 480px) {
+    .line {
+        font-size: 12vw;
+        /* Еще больше текст для маленьких экранов */
+    }
+}
