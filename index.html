@@ -2,29 +2,56 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Part 2 Block</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Mask Windows</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-    <section class="hero">
-        <!-- Текст -->
-        <p class="line">We’re here to make</p>
-        <p class="line">healthy living effortless,</p>
-        <p class="line">so you can live longer</p>
-        <p class="line">and happier</p>
-
+    <div class="hero">
+        
         <!-- Видео -->
         <div class="video-container">
-            <video id="video1" autoplay muted loop playsinline>
-                <source src="media/videos/video.mp4" type="video/mp4">
+            <video id="video1" autoplay muted loop class="background-video">
+                <source src="media/videos/video.mp4" type="video/mp4" />
             </video>
         </div>
-    </section>
 
-    <script src="script.js"></script>
+        
+
+        <!-- Чёрные блоки с окнами -->
+        <div class="text-container">
+            <div class="line">
+                <span class="black-bg">We’re here</span><span class="window window1"></span><span class="black-bg">to
+                    make</span>
+            </div>
+            <div class="line">
+                <span class="black-bg">healthy</span><span class="window window2"></span><span class="black-bg">living
+                    effortless,</span>
+            </div>
+            <div class="line">
+                <span class="black-bg">so you can</span><span class="window window3"></span><span class="black-bg">live
+                    longer</span>
+            </div>
+            <div class="line">
+                <span class="black-bg">and happier</span><span class="window window4"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-header-left"></div>
+    <div class="side-header-right"></div>
+
+
+
+    <script>
+        const video = document.getElementById('video1');
+        video.addEventListener('ended', () => {
+            video.currentTime = 0;
+            video.play();
+        });
+    </script>
 </body>
 
 </html>

@@ -1,59 +1,28 @@
-/* Общие стили */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Убираем прокрутку и устанавливаем 100% на весь экран */
-body,
-html {
+html,
+body {
     width: 100%;
     height: 100%;
-    font-family: Arial, sans-serif;
     overflow: hidden;
-    /* Убираем прокрутку */
+    background-color: transparent;
+    font-family: Arial, sans-serif;
 }
 
-/* Блок с видео и текстом */
 .hero {
     position: relative;
     width: 100%;
     height: 100vh;
-    /* Высота на весь экран */
     display: flex;
     justify-content: center;
-    /* По центру по горизонтали */
     align-items: center;
-    /* По центру по вертикали */
-    text-align: center;
     flex-direction: column;
 }
 
-/* Стили для текста */
-.line {
-    font-size: 8vw;
-    /* Текст будет масштабироваться в зависимости от ширины экрана */
-    color: white;
-    width: 100%;
-    /* Текст на всю ширину экрана */
-    height: 100%;
-    /* Текст на всю высоту экрана */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-    /* Тень для улучшения читаемости */
-    white-space: nowrap;
-    /* Запрещаем перенос текста */
-    position: relative;
-    /* Текст будет поверх видео */
-    z-index: 2;
-    /* Чтобы текст был поверх других элементов */
-}
-
-/* Контейнер для видео */
 .video-container {
     position: absolute;
     top: 0;
@@ -61,46 +30,148 @@ html {
     width: 100%;
     height: 100%;
     z-index: 0;
-    /* Видео находится за текстом */
 }
 
-/* Стили для видео */
-video {
-    position: absolute;
-    top: 0;
-    left: 0;
+.background-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Видео растягивается по экрану */
 }
 
-/* Черный полупрозрачный фон поверх видео */
-.video-container::before {
-    content: "";
+.text-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Шапка черного цвета */
+.hero::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Черный полупрозрачный фон */
+    height: 19vh;
+    /* Высота шапки, можно регулировать */
+    background-color: black;
     z-index: 1;
-    /* Это накрывает видео, но под текст */
+    /* Шапка будет над видео, но под текстом */
 }
 
-/* Адаптивность для экранов с шириной до 768px */
+.line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8vw;
+    height: 7vw;
+    white-space: nowrap;
+    position: relative;
+}
+
+.black-bg {
+    background-color: black;
+    color: white;
+    padding: 0 0.5vw;
+    line-height: 1;
+}
+
+/* Прозрачные окна */
+.window {
+    background-color: transparent;
+    border: none;
+    display: inline-block;
+}
+
+/* Размеры окон (не трогаем!) */
+.window1 {
+    width: 5cm;
+    height: 6vw;
+}
+
+.window2 {
+    width: 1.5cm;
+    height: 6vw;
+}
+
+.window3 {
+    width: 2.5cm;
+    height: 6vw;
+}
+
+.window4 {
+    width: 11cm;
+    height: 6vw;
+}
+
+/* Адаптивность */
 @media (max-width: 768px) {
     .line {
         font-size: 10vw;
-        /* Увеличиваем текст для мобильных */
+        height: 9vw;
+    }
+
+    .window1,
+    .window2,
+    .window3,
+    .window4 {
+        height: 8vw;
     }
 }
 
-/* Адаптивность для экранов с шириной до 480px */
 @media (max-width: 480px) {
     .line {
         font-size: 12vw;
-        /* Еще больше текст для маленьких экранов */
     }
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 19vh;
+    /* Высота шапки, здесь вы можете регулировать */
+    background-color: black;
+    z-index: 1;
+    /* Шапка будет над видео, но под текстом */
+}
+
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 19vh;
+    /* Высота нижней шапки, аналогично верхней */
+    background-color: black;
+    z-index: 1;
+    /* Нижняя шапка будет над видео, но под текстом */
+}
+
+.side-header-right {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3.5cm;
+    /* Ширина боковой шапки */
+    height: 100vh;
+    /* Высота на весь экран */
+    background-color: black;
+    z-index: 1;
+}
+
+.side-header-left {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3.5cm;
+    /* Ширина боковой шапки */
+    height: 100vh;
+    /* Высота на весь экран */
+    background-color: black;
+    z-index: 1;
 }
